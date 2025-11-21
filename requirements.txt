@@ -104,3 +104,4 @@ wsproto==1.2.0
 WTForms==3.2.1
 xxhash==3.5.0
 psycopg2-binary
+boto3
