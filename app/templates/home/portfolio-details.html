@@ -60,7 +60,7 @@
 
               {% if projets %}
                 <div class="swiper-wrapper align-items-center">
-                  {% for b in projets %}
+                  {% for b in gallerie %}
                     <div class="swiper-slide">
                       <img src="{{ b.image }}" alt="">
                     </div>
@@ -87,7 +87,7 @@
                   <li><strong>Catégorie</strong>: {{ projet.category }} </li>
                   <li><strong>Client</strong>: {{ projet.client }}</li>
                   <li><strong>Date du projet</strong>: {{ projet.created_at | humanize_date }}</li>
-                  <li><strong>URL du projet</strong>: <a href="{{ projet.url }}">{{ projet.url }}</a></li>
+                  <li><strong>URL du projet</strong>: <a href="{{ projet.url }}" target="_blank">{{ projet.url }}</a></li>
                 </ul>
               </div>
               <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">

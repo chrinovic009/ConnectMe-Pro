@@ -238,6 +238,95 @@
 
     </section><!-- /Features Section -->
 
+    <!-- Clients Section -->
+    {% if partenaire %}
+      <section id="clients" class="clients section">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Nos Clients</h2>
+          <p>Ils nous ont fait confiance — des collaborations solides, bâties sur l’écoute, la qualité et les résultats.</p>
+        </div><!-- End Section Title -->
+
+        <div class="container">
+
+          <div class="swiper init-swiper">
+            <script type="application/json" class="swiper-config">
+              {
+                "loop": true,
+                "speed": 600,
+                "autoplay": {
+                  "delay": 5000
+                },
+                "slidesPerView": "auto",
+                "pagination": {
+                  "el": ".swiper-pagination",
+                  "type": "bullets",
+                  "clickable": true
+                },
+                "breakpoints": {
+                  "320": {
+                    "slidesPerView": 2,
+                    "spaceBetween": 40
+                  },
+                  "480": {
+                    "slidesPerView": 3,
+                    "spaceBetween": 60
+                  },
+                  "640": {
+                    "slidesPerView": 4,
+                    "spaceBetween": 80
+                  },
+                  "992": {
+                    "slidesPerView": 6,
+                    "spaceBetween": 120
+                  }
+                }
+              }
+            </script>
+
+            <div class="swiper-wrapper align-items-center">
+              {% for p in partenaire %}
+                <div class="swiper-slide">
+                  <img src="{{ p.image }}" class="img-fluid" alt="">
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+
+        </div>
+
+      </section><!-- /Clients Section -->
+    {% endif %}
+
+    <div class="col-lg-6">
+      <form action="https://formspree.io/f/xkgyjvda" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="500">
+        <div class="row gy-4">
+
+          <div class="col-md-6">
+            <input type="text" name="name" class="form-control" placeholder="Votre Nom" required="">
+          </div>
+
+          <div class="col-md-6 ">
+            <input type="email" class="form-control" name="email" placeholder="Votre Email" required="">
+          </div>
+
+          <div class="col-md-12">
+            <textarea class="form-control" name="message" rows="4" placeholder="Message" required=""></textarea>
+          </div>
+
+          <div class="col-md-12 text-center">
+            <div class="loading">Chargement</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Votre message a été envoyé. Merci!</div>
+
+            <button type="submit">Envoyer</button>
+          </div>
+
+        </div>
+      </form>
+    </div><!-- End Contact Form -->
+
   </main>
 
   <footer id="footer" class="footer dark-background">

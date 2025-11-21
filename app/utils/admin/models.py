@@ -58,7 +58,7 @@ class Partenaires(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), nullable=False, index=True)  # Nom du partenaire
     image = db.Column(db.String(300), nullable=True)  # Logo de la companie partenaire
-    link = db.Column(db.String(20), nullable=False, index=True)  # site web
+    link = db.Column(db.String(300), nullable=False, index=True)  # site web
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 # Model pour l'équipe
