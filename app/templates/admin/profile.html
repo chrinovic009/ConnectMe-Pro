@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include 'includes/auth/head-auth.html' %}
+</head>
+
+<body class="g-sidenav-show bg-gray-100">
+    {% include 'includes/admin/aside-home.html' %}
+
+  <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
+
+    <!-- Navbar -->
+    {% include 'includes/admin/nav-home.html' %}
+    <!-- End Navbar -->
+
+    <div class="container-fluid">
+      <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image:url('{{ url_for('static', filename='assets/img/curved-images/curved0.jpg')}}')"; background-position-y: 50%;">
+        <span class="mask bg-gradient-primary opacity-6"></span>
+      </div>
+
+      <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
+        <div class="row gx-4">
+
+          <div class="col-auto">
+            <div class="avatar avatar-xl position-relative">
+                <img src="{{ compuny.image }}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+            </div>
+          </div>
+          
+          <div class="col-auto my-auto">
+            {% if current_user.id != compuny.id %}
+              <div class="h-100">
+                <h5 class="mb-1">
+                  {{ current_user.username }}
+                </h5>
+                <p class="mb-0 font-weight-bold text-sm">
+                  Client
+                </p>
+              </div>
+            {% else %}
+              <div class="h-100">
+                <h5 class="mb-1">
+                  {{ compuny.username }}
+                </h5>
+                <p class="mb-0 font-weight-bold text-sm">
+                  {{ compuny.position }}
+                </p>
+              </div>
+            {% endif %}
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid py-4">
+      <div class="row">
+
+        <div class="col-12 col-xl-4">
+          <div class="card h-100">
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="col-md-8 d-flex align-items-center">
+                  <h6 class="mb-0">Personnaliser l'assistant</h6>
+                </div>
+                <div class="col-md-4 text-end">
+                  <a href="javascript:;">
+                    <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body p-3">
+              {% if current_user.id != compuny.id %}
+
+                <p class="text-sm">
+                  Hey {{ current_user.username }}, vous ne pouvez personnaliser l'assistant de l'entreprise {{ compuny.compuny_name }} qu'en lui disant comment il doit vous appeler. 
+                  Pour tout autre personnalisation, veillez contacter l'administrateur depuis son <a href="#">adresse email</a>
+                </p>
+
+                <hr class="horizontal gray-light my-4">
+                <ul class="list-group">
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nom utilisateur:</strong> &nbsp; {{ current_user.username }}</li>
+                  <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; {{ current_user.email }}</li>
+                  <li class="list-group-item border-0 ps-0 pb-0">
+                      <form action="{{ url_for('home_blueprint.modif') }}" method="POST">
+                        {{ form.hidden_tag() }}
+
+                        {{ form.username(class="form-control", value=current_user.username ) }}
+
+                        <div class="text-center">
+                            <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Valider</button>
+                        </div>
+                      </form>
+                  </li>
+                </ul>
+              {% else %}
+
+                <p class="text-sm">
+                  Hey {{ compuny.username }}, vous pouvez personnaliser votre assistant personnel en lui fournissant un nouveau support de 
+                  base pour fournir de réponse concernant votre entréprise. Vous pouvez également mettre à jour le doccument pdf fournit au préalable 
+                </p>
+
+                <hr class="horizontal gray-light my-4">
+                <ul class="list-group">
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nom utilisateur:</strong> &nbsp; {{ compuny.username }}</li>
+                  <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; {{ compuny.email }}</li>
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Position:</strong> &nbsp; {{ compuny.position }}</li>
+                  <li class="list-group-item border-0 ps-0 pb-0">
+                      <form action="{{ url_for('home_blueprint.modife') }}" method="POST">
+                        {{ form_user.hidden_tag() }}
+
+                        <div class="mb-3">
+                          {{ form_user.username(class="form-control", value=compuny.username ) }}
+                        </div>
+                        <div class="mb-3">
+                          {{ form_user.docs(class="form-control") }}
+                        </div>
+
+                          <div class="text-center">
+                              <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Valider</button>
+                          </div>
+                      </form>
+                  </li>
+                </ul>
+
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-xl-4">
+          <div class="card h-100">
+            <div class="card-header pb-0 p-3">
+              <h6 class="mb-0">Notifications</h6>
+            </div>
+            <div class="card-body p-3">
+              <ul class="list-group">
+                {% if notifs %}
+                  {% for n in notifs %}
+                    <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                      <div class="avatar me-3">
+                        <img src="{{ url_for('static', filename='site/assets/img/logo.png') }}" alt="kal" class="border-radius-lg shadow">
+                      </div>
+                      <div class="d-flex align-items-start flex-column justify-content-center">
+                        <h6 class="mb-0 text-sm">{{ n.title }}</h6>
+                        <p class="mb-0 text-xs">{{ n.message }}</p>
+                      </div>
+                      <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">{{ n.created_at | humanize_date }}</a>
+                    </li>
+                  {% endfor %}
+                {% else %}
+                    {% if current_user.id != compuny.id %}
+                      <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                        <div class="avatar me-3">
+                          <img src="{{ url_for('static', filename='site/assets/img/logo.png') }}" alt="kal" class="border-radius-lg shadow">
+                        </div>
+                        <div class="d-flex align-items-start flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">Coucou {{ current_user.username }}</h6>
+                          <p class="mb-0 text-xs">Toutes vos nouvelles notifications afficheront ici.</p>
+                        </div>
+                      </li>
+                    {% else %}
+                      <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                        <div class="avatar me-3">
+                          <img src="{{ url_for('static', filename='assets/img/user.jpeg')}}" alt="kal" class="border-radius-lg shadow">
+                        </div>
+                        <div class="d-flex align-items-start flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">Coucou {{ compuny.username }}</h6>
+                          <p class="mb-0 text-xs">Toutes vos nouvelles notifications afficheront ici.</p>
+                        </div>
+                      </li>
+                    {% endif %}
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {% if current_user.id != compuny.id %}
+          <div class="col-12 col-xl-4">
+            <div class="card h-100">
+              <div class="card-header pb-0 p-3">
+                <h6 class="mb-0">Paramètres de la plateforme</h6>
+              </div>
+              <div class="card-body p-3">
+
+                <h6 class="text-uppercase text-body text-xs font-weight-bolder">Compte</h6>
+
+                <ul class="list-group">
+                  <li class="list-group-item border-0 px-0">
+                    <div class="form-check form-switch ps-0">
+                      <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault" checked>
+                      <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault">Me notifier des nouvelles de l'entréprise</label>
+                    </div>
+                  </li>
+                  <li class="list-group-item border-0 px-0">
+                    <div class="form-check form-switch ps-0">
+                      <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault1">
+                      <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault1">Me notifier une promotion en cours</label>
+                    </div>
+                  </li>
+                  <li class="list-group-item border-0 px-0">
+                    <div class="form-check form-switch ps-0">
+                      <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault2" checked>
+                      <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault2">Me saluer tout les matin par e-mail</label>
+                    </div>
+                  </li>
+                </ul>
+
+                <h6 class="text-uppercase text-body text-xs font-weight-bolder mt-4">Application</h6>
+
+                <ul class="list-group">
+                  <li class="list-group-item border-0 px-0">
+                    <div class="form-check form-switch ps-0">
+                      <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault3">
+                      <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault3">Mise à jour automatique</label>
+                    </div>
+                  </li>
+                  <li class="list-group-item border-0 px-0">
+                    <div class="form-check form-switch ps-0">
+                      <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault4" checked>
+                      <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault4">Utiliser hors connexion</label>
+                    </div>
+                  </li>
+                  <li class="list-group-item border-0 px-0 pb-0">
+                    <div class="form-check form-switch ps-0">
+                      <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault5">
+                      <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault5">S'inscrire à la newsletter'</label>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        {% else %}
+          <div class="col-12 col-xl-4">
+            <div class="card h-100">
+              <div class="card-header pb-0 p-3">
+                <h6 class="mb-0">Prédiction IA</h6>
+              </div>
+              <div class="card-body p-3">
+
+                <h6 class="text-uppercase text-body text-xs font-weight-bolder">Base documentaire</h6>
+
+                <ul class="list-group">
+                  {% if preds %}
+                    {% for p in preds %}
+                      <li class="list-group-item border-0 px-0">
+                        <div class="form-check form-switch ps-0">
+                          <i class="fa-solid fa-robot text-secondary text-sm"></i>
+                          <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault">{{ p.result }}</label>
+                          <i>{{ p.created_at | humanize_date }} </i>
+                        </div>
+                      </li>
+                    {% endfor %}
+                  {% else %}
+                      <li class="list-group-item border-0 px-0">
+                        <div class="form-check form-switch ps-0">
+                          <i class="fa-solid fa-robot text-secondary text-sm"></i>
+                          <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault">Aucune prédiction disponible pour le moment</label>
+                        </div>
+                      </li>
+                  {% endif %}
+                </ul>
+
+                <h6 class="text-uppercase text-body text-xs font-weight-bolder mt-4">Voix du public</h6>
+
+                <ul class="list-group">
+                  <li class="list-group-item border-0 px-0">
+                    <div class="form-check form-switch ps-0">
+                      <i class="fas fa-user text-secondary text-sm"></i>
+                      <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault3">
+                        Cette semaine, 72% d'avis sur instagram sont positifs, mais 54% sur Facebook se plaignent sur vos services
+                      </label>
+                    </div>
+                  </li>
+                  <li class="list-group-item border-0 px-0">
+                    <div class="form-check form-switch ps-0">
+                      <i class="fas fa-user text-secondary text-sm"></i>
+                      <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault4">La semaine dernière, tout les avis sont évalués à 60% de satisfaction</label>
+                    </div>
+                  </li>
+                  <li class="list-group-item border-0 px-0 pb-0">
+                    <div class="form-check form-switch ps-0">
+                      <i class="fas fa-user text-secondary text-sm"></i>
+                      <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault5">Bravo, 70% de satisfaction pour l'année 2024</label>
+                    </div>
+                  </li>
+                </ul>
+
+                <a href="#" class="btn bg-gradient-dark w-100 my-4 mb-2">Plus de détails</a>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+      </div>
+
+      {% include 'includes/admin/footer-home.html' %} 
+    </div>
+
+  </div>
+
+  <div class="fixed-plugin">
+    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2" href="{{ url_for('home_blueprint.home') }}">
+      <i class="fa-solid fa-robot py-2"> </i>
+    </a>
+  </div>
+
+  <!--   Core JS Files   -->
+  {% include 'includes/auth/script-auth.html' %}
+</body>
+
+</html>

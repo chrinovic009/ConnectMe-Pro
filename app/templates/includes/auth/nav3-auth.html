@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3  navbar-transparent mt-4">
+
+    <div class="container">
+
+        <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" href="{{ url_for('admin_blueprint.admin') }}">
+            {% if compuny %}
+                {{ compuny.compuny_name }}
+            {% else %}
+                Assistant
+            {% endif %}
+        </a>
+
+        <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon mt-2">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+            </span>
+        </button>
+
+        <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0" id="navigation">
+
+            <ul class="navbar-nav navbar-nav-hover mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center me-2 active" aria-current="page" href="{{ url_for('admin_blueprint.admin') }}">
+                        Personnaliser
+                    </a>
+                </li>
+                {% if current_user.id != compuny.id %}
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center me-2 active" aria-current="page" href="{{ url_for('home_blueprint.home') }}" target="_blank">
+                            Nous découvrir
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center me-2 active" aria-current="page" href="{{ url_for('admin_blueprint.admin') }}" target="_blank">
+                            Voir votre vitrine
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+
+            <ul class="navbar-nav d-lg-block d-none">
+                {% if current_user.id != compuny.id %}
+                    <li class="nav-item">
+                        <a href="#" class="btn btn-sm  bg-gradient-primary  btn-round mb-0 me-1" onclick="smoothToPricing('pricing-soft-ui')">Passez en premium</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a href="{{ url_for('admin_blueprint.admin') }}" class="btn btn-sm  bg-gradient-primary  btn-round mb-0 me-1" onclick="smoothToPricing('pricing-soft-ui')">Gestion d'assistance</a>
+                    </li>
+                {% endif %}
+            </ul>
+            
+        </div>
+    </div>
+</nav>

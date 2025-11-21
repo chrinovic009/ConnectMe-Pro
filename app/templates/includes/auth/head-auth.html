@@ -1,0 +1,63 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>
+    {% if page_active == 'login' %}
+
+        {% if existing_director %}
+            {{ existing_director.compuny_name }} - Connexion
+        {% endif %}
+
+    {% elif page_active == 'entreprise' %}
+        Entréprise requise
+
+    {% elif page_active == 'register' %}
+        Enregistrement
+
+    {% elif page_active == 'admin' %}
+
+        {% if compuny %}
+            {{ compuny.compuny_name }} - Administrateur Profile
+        {% endif %}
+
+    {% elif page_active == 'site_visibilite' %}
+
+        {% if compuny %}
+            {{ compuny.compuny_name }} - Administrateur Visibilité
+        {% endif %}
+
+    {% elif page_active == 'document' %}
+
+        {% if compuny %}
+            {{ compuny.compuny_name }} - Documentation
+        {% endif %}
+
+    {% elif page_active == 'aide' %}
+
+        {% if compuny %}
+            {{ compuny.compuny_name }} - Aide
+        {% endif %}
+
+    {% endif %}
+</title>
+
+<!-- Favicons -->
+<link href="{{ url_for('static', filename='site/assets/img/logo.png')}}" rel="icon">
+<link href="{{ url_for('static', filename='site/assets/img/logo.png')}}" rel="icon">
+
+<!--     Fonts and icons     -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+<!-- Nucleo Icons -->
+<link href="{{ url_for('static', filename='assets/css/nucleo-icons.css')}}" rel="stylesheet" />
+<link href="{{ url_for('static', filename='assets/css/nucleo-svg.css')}}" rel="stylesheet" />
+
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+<link href="{{ url_for('static', filename='assets/css/nucleo-svg.css')}}" rel="stylesheet" />
+<!-- CSS Files -->
+<link id="pagestyle" href="{{ url_for('static', filename='assets/css/soft-ui-dashboard.css')}}" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- gestion de nification d'erreur -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

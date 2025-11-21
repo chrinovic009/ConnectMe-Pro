@@ -1,0 +1,25 @@
+<div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+    <a href="{{ url_for('home_blueprint.home') }}" class="logo d-flex align-items-center">
+        <img id="main-logo"
+            src="{{ url_for('static', filename='site/assets/img/logo.png') }}"
+            data-logo-default="{{ url_for('static', filename='site/assets/img/logo.png') }}"
+            data-logo-scrolled="{{ url_for('static', filename='site/assets/img/logo2.png') }}"
+            alt="logo"
+        >
+    </a>
+
+    <nav id="navmenu" class="navmenu">
+        <ul>
+            <li><a href="{{ url_for('home_blueprint.home') }}" class="{% if page_active=='home' %}active{% endif %}">Acceuil</a></li>
+            <li><a href="{{ url_for('home_blueprint.about') }}" class="{% if page_active=='about' %}active{% endif %}">A propos</a></li>
+            <li><a href="{{ url_for('home_blueprint.services') }}" class="{% if page_active=='services' or page_active=='services_details' %}active{% endif %}">Services</a></li>
+            <li><a href="{{ url_for('home_blueprint.portfolio') }}" class="{% if page_active=='portfolio' or page_active=='portfolio_detail' %}active{% endif %}">Gallerie</a></li>
+            <li><a href="{{ url_for('home_blueprint.team') }}" class="{% if page_active=='team' %}active{% endif %}">Équipes</a></li>
+            <li><a href="{{ url_for('home_blueprint.blog') }}" class="{% if page_active=='blog' or page_active=='blog_detail' %}active{% endif %}">Blog</a></li>
+            <li><a href="{{ url_for('home_blueprint.contact') }}" class="{% if page_active=='contact' or page_active=='contact' %}active{% endif %}">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+    </nav>
+
+</div>

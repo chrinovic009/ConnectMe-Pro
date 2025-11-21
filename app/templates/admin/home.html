@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include 'includes/auth/head-auth.html' %}
+</head>
+
+<body class="g-sidenav-show  bg-gray-100">
+  <!-- Navbar -->
+  {% include 'includes/auth/nav3-auth.html' %}
+  <!-- End Navbar -->
+
+  <section class="min-vh-100 mb-8">
+
+    <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg" style="background-image:url('{{ url_for('static', filename='assets/img/curved-images/curved14.jpg')}}')">
+      <span class="mask bg-gradient-dark opacity-6"></span>
+
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-5 text-center mx-auto">
+            <h1 class="text-white mb-2 mt-5">Coucou {{ current_user.username }} !</h1>
+            <p class="text-lead text-white welcome"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row mt-lg-n10 mt-md-n11 mt-n10">
+        <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
+          <div class="card z-index-0">
+
+            <div class="card-header text-center pt-4">
+              <h5>Posez votre question</h5>
+            </div>
+
+            {% if last_question and last_answer %}
+              <div class="messages" >
+                <!-- Messages go here -->
+                <div class="question-posee">
+                  {{ last_question }}
+                </div>
+
+                <div class="reponse-recu" id="bot-answer">
+                </div>
+                  
+              </div>
+            {% endif %}
+
+            <div class="card-body">
+                <form role="form text-left" id="askForm" action="{{ url_for('home_blueprint.ask') }}" method="POST">
+                  {{ form.hidden_tag() }}
+
+                    <div class="mb-3" style="display: flex;">
+
+                        {{ form.question(class="form-control", placeholder="Votre question...", id="chat-input") }}
+
+                        <button class="send-btn" type="submit">
+                            <div class="ecg-line" id="send-btn"> <i class="icon-form fa-solid fa-microphone"></i></div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- -------- START FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
+  {% include 'includes/auth/footer-auth.html' %} 
+  <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
+  <!--   Core JS Files   -->
+  {% include 'includes/auth/script-auth.html' %}
+  {% include 'includes/home/script-home.html' %} 
+</body>
+
+</html>

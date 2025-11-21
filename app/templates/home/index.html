@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include 'includes/home/head_site.html' %}
+</head>
+
+<body class="index-page">
+
+  <!-- Topbar -->
+  <div class="topbar bg-light py-2 border-bottom fixed-top">
+    {% include 'includes/home/info.html' %}
+  </div>
+
+  <!-- Header principal en dessous -->
+  <header id="header" class="header fixed-top">
+    <div class="container-xl">
+      {% include 'includes/home/header_site.html' %}
+    </div>
+  </header>
+
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+      {% if current_user.id != compuny.id %}
+        {% include 'includes/home/hero_user.html' %}
+      {% else %}
+        {% include 'includes/home/hero_director.html' %}
+      {% endif %}
+    </section><!-- /Hero Section -->
+
+    <!-- Featured Services Section -->
+    <section id="featured-services" class="featured-services section">
+
+      <div class="container">
+
+        <style>
+          .btn-plus {
+            font-size: 2rem;
+            padding: 8px 12px;
+            transition: all 0.3s ease;
+          }
+        </style>
+
+        <div class="row gy-4">
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item item-cyan position-relative">
+              <div class="icon">
+                <i class="bi bi-bag"></i>
+              </div>
+              <a href="{{ url_for('home_blueprint.services_details', service='provision') }}" class="stretched-link">
+                <h3>Fourniture EPI & Consommables Bureau</h3>
+              </a>
+              <p>
+                ConnectMe fournit des équipements de protection individuelle (EPI) et des consommables de bureau fiables et adaptés, pour 
+                garantir sécurité, confort et productivité au quotidien.
+              </p>
+              <a href="" class="btn-get-started btn-plus"><i class="bi bi-arrow-right-circle"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item item-orange position-relative">
+              <div class="icon">
+                <i class="bi bi-palette"></i>
+              </div>
+              <a href="{{ url_for('home_blueprint.services_details', service='sale') }}" class="stretched-link">
+                <h3>Imprimérie</h3>
+              </a>
+              <p>
+                Chez ConnectMe, nous donnons vie à vos idées : visuels, impressions de qualité et broderies professionnelles sur vêtements, 
+                accessoires et textiles. Pour vos uniformes, tenues d’entreprise ou événements, nous valorisons votre image avec passion et précision.
+              </p>
+              <a href="" class="btn-get-started btn-plus"><i class="bi bi-arrow-right-circle"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item item-teal position-relative">
+              <div class="icon">
+                <i class="bi bi-cpu"></i>
+              </div>
+              <a href="{{ url_for('home_blueprint.services_details', service='maintenance') }}" class="stretched-link">
+                <h3>Service IT</h3>
+              </a>
+              <p>
+                Chez ConnectMe, nous concevons des plateformes web modernes, sécurisées et évolutives, intégrant des solutions intelligentes grâce à l’IA. 
+                Du design à l’automatisation, chaque projet est pensé pour simplifier vos processus, valoriser votre image et s’adapter à vos besoins.
+              </p>
+              <a href="" class="btn-get-started btn-plus"><i class="bi bi-arrow-right-circle"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item item-red position-relative">
+              <div class="icon">
+                <i class="bi bi-building"></i>
+              </div>
+              <a href="{{ url_for('home_blueprint.services_details', service='financial') }}" class="stretched-link">
+                <h3>Génie Civil</h3>
+              </a>
+              <p>
+                ConnectMe réalise vos ouvrages en béton, acier et bois — bâtiments, ponts, barrages, réseaux hydrauliques — tout en assurant la 
+                gestion de projets, les conseils techniques et les finitions décoratives intérieures et extérieures.
+              </p>
+              <a href="" class="btn-get-started btn-plus"><i class="bi bi-arrow-right-circle"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+        </div>
+
+      </div>
+
+    </section><!-- /Featured Services Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section light-background">
+
+      <div class="container">
+
+        <div class="row gy-4">
+          <div class="col-lg-6 position-relative align-self-start" data-aos="fade-up" data-aos-delay="100">
+            <img src="{{ url_for('static', filename='site/assets/img/about.jpeg')}}" class="img-fluid" alt="">
+            <a href="{{ url_for('static', filename='site/assets/img/connectme.mp4')}}" class="glightbox pulsating-play-btn"></a>
+          </div>
+
+          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="200"> 
+            <h3>Qui sommes-nous ?</h3>
+
+            <p class="fst-italic">
+              ConnectMe est une société dont l’objet social est la création et la vente de servives pour les entreprises et le 
+              gouvernement, connectMe met à la disposition des entreprises et des individus une large gamme de services varié de 
+              qualité professionnelle couvrant des solutions web, IOT,mobiles ainsi que l’imprimerie moderne.
+            </p>
+
+            <ul>
+              <li style="gap: 5px !important;"><i class="bi bi-check2-all"></i> <strong>Innovation: </strong> Proposer des solutions technologiques modernes et efficaces.</li>
+              <li style="gap: 5px !important;"><i class="bi bi-check2-all"></i> <strong>Engagement: </strong> Prioriser la satisfaction client par un service rapide et fiable.</li>
+              <li style="gap: 5px !important;"><i class="bi bi-check2-all"></i> <strong>Intégrité: </strong> Respecter les normes éthiques et professionnelles.</li>
+              <li style="gap: 5px !important;"><i class="bi bi-check2-all"></i> <strong>Partenariat: </strong> Construire des relations durables avec nos clients et partenaires.</li>
+            </ul>
+
+            <p>
+              Nous accompagnons entreprises et institutions avec des solutions fiables, rapides et adaptées à chaque projet.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+    <!-- Features Section -->
+    <section id="features" class="features section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Fonctionnalités</h2>
+        <p>Des solutions concrètes, pensées pour simplifier votre quotidien, valoriser votre activité et sécuriser vos opérations.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4 align-items-center features-item">
+          <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="100">
+            <img src="{{ url_for('static', filename='site/assets/img/features-1.png')}}" class="img-fluid" alt="">
+          </div>
+          <div class="col-md-7" data-aos="fade-up" data-aos-delay="100">
+            <h3>Systèmes de sécurité</h3>
+            <p class="fst-italic">
+              Caméras de surveillance, alarmes intelligentes, gestion à distance.
+            </p>
+            <ul>
+              <li><i class="bi bi-check"></i><span>Installation et maintenance de caméras de surveillance haute définition.</span></li>
+              <li><i class="bi bi-check"></i><span>Intégration d’alarmes intelligentes et systèmes de contrôle d’accès.</span></li>
+              <li><i class="bi bi-check"></i><span>Gestion centralisée et surveillance à distance via plateformes sécurisées.</span></li>
+            </ul>
+          </div>
+        </div><!-- Features Item -->
+
+        <div class="row gy-4 align-items-center features-item">
+          <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+            <img src="{{ url_for('static', filename='site/assets/img/features-2.png')}}" class="img-fluid" alt="">
+          </div>
+          <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="200">
+            <h3>Dévéloppement Web</h3>
+            <p class="fst-italic">
+                Création de sites web modernes, sécurisés et adaptés à vos besoins.
+            </p>
+            <p>
+              Chez ConnectMe, nous créons des plateformes intelligentes, sécurisées et évolutives, alliant design moderne, 
+              développement fullstack et intégration d’IA. Chaque solution est pensée pour automatiser vos processus, valoriser votre image 
+              et s’adapter à vos ambitions.
+            </p>
+          </div>
+        </div><!-- Features Item -->
+
+        <div class="row gy-4 align-items-center features-item">
+          <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out">
+            <img src="{{ url_for('static', filename='site/assets/img/features-3.png')}}" class="img-fluid" alt="">
+          </div>
+          <div class="col-md-7" data-aos="fade-up">
+            <h3>Ingénierie & Réalisation en Génie Civil</h3>
+            <p>
+              Conception, dimensionnement et exécution d’ouvrages structuraux, hydrauliques et décoratifs, avec accompagnement technique complet. 
+              ConnectMe allie expertise, rigueur et créativité pour bâtir durablement et valoriser chaque espace.
+            </p>
+            <ul>
+              <li><i class="bi bi-check"></i> <span>Conception, dimensionnement et réalisation de batiments (en béton, acier et bois), ponts, barrages.</span></li>
+              <li><i class="bi bi-check"></i> <span>Réalisation des réseaux d'eau, des stations d'épuration, des canaux.</span></li>
+              <li><i class="bi bi-check"></i> <span>Décoration, design intérieur, extérieur, plafond, mastics et peinture.</span></li>
+            </ul>
+          </div>
+        </div><!-- Features Item -->
+
+        <div class="row gy-4 align-items-center features-item">
+          <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out">
+            <img src="{{ url_for('static', filename='site/assets/img/features-4.jpg')}}" class="img-fluid" alt="">
+          </div>
+          <div class="col-md-7 order-2 order-md-1" data-aos="fade-up">
+            <h3>Impression sur tout support</h3>
+            <p class="fst-italic">
+              Impression professionnelle sur textile, papier, objets publicitaires et supports variés. Personnalisation sur mesure pour valoriser votre marque, vos événements ou vos projets, avec des finitions de qualité et un accompagnement dédié.
+            </p>
+            <p>
+                Soucieux de vous proposer des impressions qui répondent à vos exigences en matière de
+                conception et façonnage, notre équipe est disponible pour vous
+                accompagner tout au long du processus: de l'idée à la création, à l'impression et
+                à la finition.
+            </p>
+          </div>
+        </div><!-- Features Item -->
+
+      </div>
+
+    </section><!-- /Features Section -->
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    {% include 'includes/home/footer_site.html' %}
+  </footer>
+
+  {% include 'includes/home/script_site.html' %}
+
+</body>
+
+</html>

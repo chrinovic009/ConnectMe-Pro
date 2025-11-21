@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include 'includes/home/head_site.html' %}
+</head>
+
+<body class="team-page">
+
+  <!-- Topbar -->
+  <div class="topbar bg-light py-2 border-bottom fixed-top">
+    {% include 'includes/home/info.html' %}
+  </div>
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    {% include 'includes/home/header_site.html' %}
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title dark-background">
+      <div class="container position-relative">
+        <h1>Équipes</h1>
+        <p>Des talents complémentaires, unis par la passion du service et la rigueur du résultat.</p>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{{ url_for('home_blueprint.home') }}">Acceuil</a></li>
+            <li class="current">Équipes</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Team Section -->
+    {% if teamer %}
+      <section id="team" class="team section">
+
+        <div class="container">
+
+          <div class="row gy-5">
+
+            {% for b in teamer %}
+              <div class="col-lg-3 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
+                <div class="member-img">
+                  <img src="{{ b.image }}" class="img-fluid" alt="">
+                  <div class="social">
+                    <a href="{{ b.facebook }}"><i class="bi bi-facebook"></i></a>
+                    <a href="{{ b.insta }}"><i class="bi bi-instagram"></i></a>
+                    <a href="{{ b.linked }}"><i class="bi bi-linkedin"></i></a>
+                  </div>
+                </div>
+                <div class="member-info text-center">
+                  <h4>{{ b.name }}</h4>
+                  <span>{{ b.poste }}</span>
+                  <p>
+                    {% if b.poste == 'CEO' or b.poste == 'Ceo'%} 
+                      À la tête de notre vision, un leadership engagé qui allie stratégie, innovation et proximité terrain.
+                    {% endif %}
+                  </p>
+                </div>
+              </div><!-- End Team Member -->
+            {% endfor %}
+
+          </div>
+
+        </div>
+
+      </section><!-- /Team Section -->
+    {% else %}
+      <div class="row justify-content-center text-center">
+          <div class="col-12">
+            <article>Aucun membre pour le moment</article>
+          </div>
+      </div>
+    {% endif %}
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    {% include 'includes/home/footer_site.html' %}
+  </footer>
+
+  {% include 'includes/home/script_site.html' %}
+
+</body>
+
+</html>

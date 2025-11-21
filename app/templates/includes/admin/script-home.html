@@ -1,0 +1,178 @@
+<style>
+    .question-posee{
+        background: rgb(68, 68, 173);
+        color: #fff;
+        padding: 10px;
+        border-radius: 10px;
+        max-width: 50%;
+        margin-left: 140px;
+        margin-top: 5px;
+    }
+
+    .reponse-recu{
+        background: rgb(173, 68, 115);
+        color: #fff;
+        padding: 10px;
+        border-radius: 10px;
+        margin-left: 20px;
+        margin-top: 5px;
+        max-width: 50%;
+    }
+
+    .mb-3 .form-control{
+        width: 90% !important;
+        border-bottom-right-radius: 0px !important;
+        border-top-right-radius: 0px !important;
+    }
+    .send-btn {
+        width: 10% !important;
+        right: 10px;
+        background: rgb(173, 68, 115);
+        border: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: #fff;
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px
+        }
+    .icon-form{
+        font-size: 20px !important;
+    }
+</style>
+
+<script>
+    const messagesContainer = document.querySelector('.welcome');
+    // Simuler une réponse progressive
+    setTimeout(() => {
+            const botBubble = document.createElement('div');
+
+            messagesContainer.appendChild(botBubble);
+
+            const response = "{% if current_user.id != compuny.id %}Comment l'entreprise {{ compuny.compuny_name }} peut-elle vous aider ?{% else %}Je suis votre réprésentant virtuel de l'entréprise, comment puis-je vous être utile ?{% endif %}";
+            let index = 0;
+
+            const typeResponse = setInterval(() => {
+                if (index < response.length) {
+                    botBubble.textContent += response[index];
+                    index++;
+                } else {
+                    clearInterval(typeResponse);
+                    setIcon('heartbeat');
+                }
+            }, (2000 / response.length)); // Temps total divisé par le nombre de caractères
+        }, 200); // Délai initial avant de commencer à taper
+</script>
+
+<script>
+    const input = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('send-btn');
+
+    function setIcon(type) {
+        if (type === 'heartbeat') {
+            sendBtn.innerHTML = `<div class="ecg-icon"><i class="icon-form fa-solid fa-microphone"></i></div>`;
+        } else if (type === 'send') {
+            sendBtn.innerHTML = `<i class='icon-form fa-solid fa-paper-plane'></i>`;
+        } else if (type === 'pause') {
+            sendBtn.innerHTML = `<i class='icon-form fa-solid fa-pause'></i>`;
+        }
+    }
+
+    input.addEventListener('input', () => {
+        if (input.value.trim() === '') {
+            setIcon('heartbeat');
+        } else {
+            setIcon('send');
+        }
+    });
+
+    sendBtn.addEventListener('click', () => {
+        const messagesContainer = document.querySelector('.messages');
+        const userMessage = input.value.trim();
+
+        if (userMessage !== '') {
+            // Message utilisateur
+            const userBubble = document.createElement('div');
+            userBubble.textContent = userMessage;
+            userBubble.style.cssText = `
+                background: rgb(68, 68, 173);
+                color: #fff;
+                padding: 10px;
+                border-radius: 10px;
+                max-width: 50%;
+                margin-left: 140px;
+                margin-top: 5px;
+            `;
+            messagesContainer.appendChild(userBubble);
+
+            // Reset champ + icône en pause
+            setIcon('pause');
+            input.value = '';
+
+            // Appel backend Flask (JSON)
+            fetch('/ask', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ question: userMessage })
+            })
+            .then(res => res.json())
+            .then(data => {
+                // Message bot
+                const botBubble = document.createElement('div');
+                botBubble.style.cssText = `
+                    background: rgb(173, 68, 115);
+                    color: #fff;
+                    padding: 10px;
+                    border-radius: 10px;
+                    margin-left: 20px;
+                    margin-top: 5px;
+                    max-width: 50%;
+                `;
+                botBubble.textContent = data.answer || "Désolé, je n'ai rien trouvé dans les documents.";
+                messagesContainer.appendChild(botBubble);
+                setIcon('heartbeat');
+            })
+            .catch(err => {
+                console.error("Erreur fetch:", err);
+                const botBubble = document.createElement('div');
+                botBubble.textContent = "Erreur de serveur.";
+                messagesContainer.appendChild(botBubble);
+                setIcon('heartbeat');
+            });
+        }
+    });
+
+    // Init
+    setIcon('heartbeat');
+</script>
+
+<div id="bot-answer" style="
+    background: rgb(173, 68, 115);
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 50%;
+    margin-left: 20px;
+    margin-top: 5px;">
+</div>
+
+<script>
+function typeWriter(text, elementId, speed=40) {
+    let i = 0;
+    const el = document.getElementById(elementId);
+    el.textContent = "";
+    function typing() {
+        if (i < text.length) {
+            el.textContent += text.charAt(i);
+            i++;
+            setTimeout(typing, speed);
+        }
+    }
+    typing();
+}
+
+// Appel de la fonction avec la réponse du serveur
+{% if last_answer %}
+    typeWriter({{ last_answer|tojson }}, "bot-answer", 40);
+{% endif %}
+</script>
+

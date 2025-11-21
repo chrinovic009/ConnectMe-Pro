@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include 'includes/home/head_site.html' %}
+</head>
+
+<body class="portfolio-details-page">
+
+  <!-- Topbar -->
+  <div class="topbar bg-light py-2 border-bottom fixed-top">
+    {% include 'includes/home/info.html' %}
+  </div>
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    {% include 'includes/home/header_site.html' %}
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title dark-background">
+      <div class="container position-relative">
+        <h1>Details Gallerie</h1>
+        <p>Chaque image révèle un instant de notre parcours — entre savoir-faire, passion et engagement sur le terrain.</p>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{{ url_for('home_blueprint.home') }}">Acceuil</a></li>
+            <li class="current">Details Gallerie</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Portfolio Details Section -->
+    <section id="portfolio-details" class="portfolio-details section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper init-swiper">
+
+              <script type="application/json" class="swiper-config">
+                {
+                  "loop": true,
+                  "speed": 600,
+                  "autoplay": {
+                    "delay": 5000
+                  },
+                  "slidesPerView": "auto",
+                  "pagination": {
+                    "el": ".swiper-pagination",
+                    "type": "bullets",
+                    "clickable": true
+                  }
+                }
+              </script>
+
+              {% if projets %}
+                <div class="swiper-wrapper align-items-center">
+                  {% for b in projets %}
+                    <div class="swiper-slide">
+                      <img src="{{ b.image }}" alt="">
+                    </div>
+                  {% endfor %}
+                </div>
+              {% else %}
+                <div class="swiper-wrapper align-items-center">
+                  {% for b in gallerie %}
+                    <div class="swiper-slide">
+                      <img src="{{ b.image }}" alt="">
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+
+          {% if projet %}
+            <div class="col-lg-4">
+              <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
+                <h3>Projets en Cours</h3>
+                <ul>
+                  <li><strong>Catégorie</strong>: {{ projet.category }} </li>
+                  <li><strong>Client</strong>: {{ projet.client }}</li>
+                  <li><strong>Date du projet</strong>: {{ projet.created_at | humanize_date }}</li>
+                  <li><strong>URL du projet</strong>: <a href="{{ projet.url }}">{{ projet.url }}</a></li>
+                </ul>
+              </div>
+              <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
+                <h2>{{ projet.name }}</h2>
+                <p>
+                  {{ projet.details }}
+                </p>
+              </div>
+            </div>
+          {% else %}
+            <div class="row justify-content-center text-center">
+              <div class="col-12">
+                <article>Aucun projet pour le moment</article>
+              </div>
+            </div>
+          {% endif %}
+
+        </div>
+
+      </div>
+
+    </section><!-- /Portfolio Details Section -->
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    {% include 'includes/home/footer_site.html' %}
+  </footer>
+
+  {% include 'includes/home/script_site.html' %}
+
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include 'includes/home/head_site.html' %}
+</head>
+
+<body class="portfolio-page">
+
+  <!-- Topbar -->
+  <div class="topbar bg-light py-2 border-bottom fixed-top">
+    {% include 'includes/home/info.html' %}
+  </div>
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    {% include 'includes/home/header_site.html' %}
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title dark-background">
+      <div class="container position-relative">
+        <h1>Gallerie</h1>
+        <p>Un aperçu en images de notre savoir-faire, nos projets et notre engagement sur le terrain.</p>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{{ url_for('home_blueprint.home') }}">Acceuil</a></li>
+            <li class="current">Gallerie</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio section">
+
+      {% if gallerie %}
+        <div class="container">
+
+          <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+            <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+              <li data-filter="*" class="filter-active">Tout</li>
+              <li data-filter=".filter-app">Fournitures</li>
+              <li data-filter=".filter-product">Imprimérie</li>
+              <li data-filter=".filter-branding">Services IT</li>
+              <li data-filter=".filter-books">Génie Civil</li>
+            </ul><!-- End Portfolio Filters -->
+
+            <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+              
+              {% for g in gallerie %}
+                <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{ g.category }}">
+                  <div class="portfolio-content h-100">
+                    <img src="{{ g.image }}" class="img-fluid" alt="">
+                    <div class="portfolio-info">
+                      <h4>{{ g.title }}</h4>
+                      <p>{{ g.description }}</p>
+                      <a href="{{ g.image }}" title="{{ g.title }}" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                      <a href="{{ url_for('home_blueprint.portfolio_detail') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    </div>
+                  </div>
+                </div><!-- End Portfolio Item -->
+              {% endfor %}
+
+            </div><!-- End Portfolio Container -->
+
+          </div>
+
+        </div>
+      {% else %}
+        <div class="row justify-content-center text-center">
+          <div class="col-12">
+            <article>Aucune Image pour le moment</article>
+          </div>
+        </div>
+      {% endif %}
+
+    </section><!-- /Portfolio Section -->
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    {% include 'includes/home/footer_site.html' %}
+  </footer>
+
+  {% include 'includes/home/script_site.html' %}
+
+</body>
+
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include 'includes/home/head_site.html' %}
+</head>
+
+<body class="service-details-page">
+
+  <!-- Topbar -->
+  <div class="topbar bg-light py-2 border-bottom fixed-top">
+    {% include 'includes/home/info.html' %}
+  </div>
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    {% include 'includes/home/header_site.html' %}
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title dark-background">
+      <div class="container position-relative">
+        <h1>Details Service</h1>
+        <p>Explorez nos expertises en profondeur — chaque service est pensé pour répondre précisément à vos enjeux.</p>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{{ url_for('home_blueprint.services') }}">Services</a></li>
+            <li class="current">Details Service</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Service Details Section -->
+    <section id="service-details" class="service-details section">
+
+      <div class="container">
+
+        <div class="row gy-5">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="service-box">
+              <h4>Listes Serices</h4>
+              <div class="services-list nav nav-tabs flex-column" id="servicesTab" role="tablist">
+
+                <a href="#" 
+                  class="nav-link {% if service == 'home' %}active{% endif %}" 
+                  id="home-tab" 
+                  data-bs-toggle="tab" 
+                  data-bs-target="#home" 
+                  role="tab" 
+                  aria-controls="home" 
+                  aria-selected="{{ 'true' if service == 'home' else 'false' }}"
+                  >
+                  <i class="bi bi-arrow-right-circle"></i>
+                  <span>
+                    Nos services
+                  </span>
+                </a>
+
+                <a href="#" 
+                  class="nav-link {% if service == 'provision' %}active{% endif %}" 
+                  id="provision-tab" 
+                  data-bs-toggle="tab" 
+                  data-bs-target="#provision" 
+                  role="tab" 
+                  aria-controls="provision" 
+                  aria-selected="{{ 'true' if service == 'provision' else 'false' }}"
+                  >
+                  <i class="bi bi-arrow-right-circle"></i>
+                  <span>
+                    Fournitures EPI & Consommables Bureau
+                  </span>
+                </a>
+
+                <a href="#" 
+                  class="nav-link {% if service == 'sale' %}active{% endif %}" 
+                  id="sale-tab" 
+                  data-bs-toggle="tab" 
+                  data-bs-target="#sale" 
+                  role="tab" 
+                  aria-controls="sale" 
+                  aria-selected="{{ 'true' if service == 'sale' else 'false' }}"
+                  >
+                  <i class="bi bi-arrow-right-circle"></i>
+                  <span>
+                    Imprimérie
+                  </span>
+                </a>
+
+                <a href="#" 
+                  class="nav-link {% if service == 'maintenance' %}active{% endif %}" 
+                  id="maintenance-tab" 
+                  data-bs-toggle="tab" 
+                  data-bs-target="#maintenance" 
+                  role="tab" 
+                  aria-controls="maintenance" 
+                  aria-selected="{{ 'true' if service == 'maintenance' else 'false' }}"
+                  >
+                  <i class="bi bi-arrow-right-circle"></i>
+                  <span>Service IT</span>
+                </a>
+
+                <a href="#" 
+                  class="nav-link {% if service == 'financial' %}active{% endif %}" 
+                  id="financial-tab" 
+                  data-bs-toggle="tab" 
+                  data-bs-target="#financial" 
+                  role="tab" 
+                  aria-controls="financial" 
+                  aria-selected="{{ 'true' if service == 'financial' else 'false' }}">
+                  <i class="bi bi-arrow-right-circle"></i>
+                  <span>Génie Civil</span>
+                </a>
+                
+              </div>
+            </div><!-- End Services List -->
+
+            <div class="service-box">
+              <h4>Télécharger Catalog</h4>
+              <div class="download-catalog">
+                <a href="{{ url_for('static', filename='PROFIL_CONNECTME_2025_TR.pdf') }}" target="_blank"><i class="bi bi-filetype-pdf"></i><span>Catalog PDF</span></a>
+              </div>
+            </div><!-- End Services List -->
+
+            <div class="help-box d-flex flex-column justify-content-center align-items-center">
+              <i class="bi bi-headset help-icon"></i>
+              <h4>Avez-vous une Question?</h4>
+              <p class="d-flex align-items-center mt-2 mb-0"><i class="bi bi-telephone me-2"></i> <a href="tel:+243977252655">+243 977 25 26 55</a></p>
+              <p class="d-flex align-items-center mt-1 mb-0"><i class="bi bi-envelope me-2"></i> <a href="mailto:contact@connectme-pro.com">contact@connectme-pro.com</a></p>
+            </div>
+
+          </div>
+
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+            <div class="tab-content" id="servicesTabContent">
+
+              <div class="tab-pane fade {% if service == 'home' %}show active{% endif %}" 
+                  id="home" 
+                  role="tabpanel" 
+                  aria-labelledby="home-tab"
+                  >
+
+                <img src="{{ url_for('static', filename='site/assets/img/home.jpg')}}" alt="" class="img-fluid services-img">
+                <h3>ConnectMe Sarl</h3>
+                <p>
+                  Une entreprise œuvrant dans plusieurs domaines :
+                </p>
+                <p>
+                  ConnectMe Sarl est une entreprise dynamique et innovante, spécialisée dans la fourniture de solutions sur mesure pour accompagner la croissance et la transformation des organisations. Forte d’une équipe multidisciplinaire, nous intervenons dans des secteurs variés tels que l’imprimerie, la conception de sites internet et le web design, le réseau informatique, ainsi que la fourniture d’équipements de protection individuelle (ÉPI). Notre expertise s’étend également à la distribution de matériaux de construction, la papeterie et les fournitures de bureau, l’électricité, le consulting, l’immobilier, et le commerce en ligne.
+
+                  Notre mission est d’apporter des réponses concrètes et adaptées aux besoins spécifiques de nos clients, en mettant l’accent sur la qualité, la réactivité et l’innovation. Nous nous engageons à offrir un accompagnement personnalisé à chaque étape de vos projets, qu’il s’agisse de la création, de la gestion ou du développement de votre activité.
+
+                  Chez ConnectMe Sarl, nous croyons en la valeur de la proximité et du partenariat durable. Notre approche collaborative nous permet de bâtir des relations de confiance avec nos clients et de contribuer activement à leur réussite. Grâce à notre savoir-faire et à notre passion pour l’excellence, nous sommes le partenaire idéal pour relever vos défis et concrétiser vos ambitions.
+
+                  Rejoignez-nous et découvrez comment ConnectMe Sarl peut transformer vos idées en solutions performantes et pérennes.
+                </p>
+              </div>
+
+              <div class="tab-pane fade {% if service == 'provision' %}show active{% endif %}" 
+                    id="provision" 
+                    role="tabpanel" 
+                    aria-labelledby="provision-tab"
+                    >
+
+                <img src="{{ url_for('static', filename='site/assets/img/epi.jpg')}}" alt="" class="img-fluid services-img">
+                <h3>Fourniture d’Équipements de Protection Individuelle (EPI)</h3>
+                <p>
+                    ConnectMe Sarl propose une gamme complète d’équipements de protection individuelle adaptés à tous les secteurs d’activité. Casques, 
+                    gants, lunettes, vêtements de travail, chaussures de sécurité et accessoires spécialisés sont sélectionnés pour leur qualité, 
+                    leur conformité aux normes et leur durabilité. Nous accompagnons les entreprises dans le choix des équipements les plus adaptés aux 
+                    risques spécifiques de chaque métier, avec un souci constant de sécurité, de confort et de performance. Grâce à nos partenariats avec 
+                    des fabricants reconnus, nous garantissons des produits fiables et disponibles rapidement, avec un service de conseil et de formation à 
+                    l’utilisation des EPI.
+                </p>
+
+                <div class="container mt-4">
+                  <div class="row g-4">
+                    <div class="col-6 col-md-3">
+                      <img src="{{ url_for('static', filename='site/assets/img/equipe-1.jpg') }}" alt="Service 1" class="img-fluid zoom-on-hover">
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <img src="{{ url_for('static', filename='site/assets/img/equipe-2.jpg') }}" alt="Service 2" class="img-fluid zoom-on-hover">
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <img src="{{ url_for('static', filename='site/assets/img/equipe-3.jpg') }}" alt="Service 3" class="img-fluid zoom-on-hover">
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <img src="{{ url_for('static', filename='site/assets/img/equipe-4.jpg') }}" alt="Service 4" class="img-fluid zoom-on-hover">
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <img src="{{ url_for('static', filename='site/assets/img/equipe-5.jpg') }}" alt="Service 5" class="img-fluid zoom-on-hover">
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <img src="{{ url_for('static', filename='site/assets/img/equipe-6.jpg') }}" alt="Service 6" class="img-fluid zoom-on-hover">
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <img src="{{ url_for('static', filename='site/assets/img/equipe-7.jpg') }}" alt="Service 7" class="img-fluid zoom-on-hover">
+                    </div>
+                  </div>
+                </div>
+
+                <h3 class="mt-4">Fourniture de Consommables de Bureau</h3>
+                <p>
+                  ConnectMe Sarl fournit également tous les consommables nécessaires au bon fonctionnement des environnements professionnels : papiers, 
+                  stylos, cartouches, classeurs, enveloppes, accessoires informatiques et fournitures diverses. Nous assurons une disponibilité 
+                  constante des produits essentiels pour garantir la continuité des activités et le confort des équipes. Notre service est conçu pour 
+                  répondre aux besoins des entreprises, institutions et professionnels, avec des articles de qualité, livrés rapidement et adaptés à 
+                  chaque usage. ConnectMe simplifie la gestion des fournitures de bureau avec un accompagnement personnalisé et une logistique efficace.
+                </p>
+
+                <div class="container mt-4">
+                  <div class="row g-4">
+                    <div class="col-6 col-md-3">
+                      <img src="{{ url_for('static', filename='site/assets/img/bureau-1.jpg') }}" alt="Service 1" class="img-fluid zoom-on-hover">
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <img src="{{ url_for('static', filename='site/assets/img/bureau-2.jpg') }}" alt="Service 2" class="img-fluid zoom-on-hover">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade {% if service == 'sale' %}show active{% endif %}" 
+                    id="sale" 
+                    role="tabpanel" 
+                    aria-labelledby="sale-tab"
+                    >
+
+                <img src="{{ url_for('static', filename='site/assets/img/broderie.jpg')}}" alt="" class="img-fluid services-img">
+                <h3>Sublimez votre image avec style, précision et créativité.</h3>
+                <p>
+                  Chez ConnectMe, nous transformons vos idées en créations visuelles uniques, alliant design graphique, impression textile et broderie 
+                  professionnelle. Que ce soit pour vos uniformes, vos événements ou vos cadeaux d’entreprise, nous vous accompagnons de la conception à 
+                  la réalisation, avec un souci du détail et une finition irréprochable. Notre atelier propose des visuels sur mesure, adaptés à votre identité 
+                  visuelle et à vos supports (t-shirts, casquettes, tote bags, etc.). Nous utilisons des techniques de broderie et d’impression de haute qualité 
+                  pour garantir durabilité, élégance et impact visuel. Chaque projet est traité avec soin, dans le respect de vos délais et de vos exigences. 
+                  Nous vous conseillons sur les formats, les couleurs et les matières pour un rendu optimal. Grâce à notre expertise en branding, nous vous 
+                  aidons à renforcer votre image de marque. L’atelier est aussi un espace de création pour les particuliers, associations et entreprises 
+                  souhaitant marquer les esprits avec des supports personnalisés.
+                </p>
+                <ul>
+                  <li><i class="bi bi-check-circle"></i> <span>Créativité sur mesure : chaque visuel est pensé pour refléter votre identité et vos valeurs.</span></li>
+                  <li><i class="bi bi-check-circle"></i> <span>Qualité professionnelle : broderie et impression durables, finitions soignées.</span></li>
+                  <li><i class="bi bi-check-circle"></i> <span>Accompagnement complet : de l’idée à la livraison, avec conseils personnalisés.</span></li>
+                </ul>
+
+                <div class="container mt-4">
+                  <div class="row g-4">
+                    <div class="col-6 col-md-3">
+                      <img src="{{ url_for('static', filename='site/assets/img/impression.jpg') }}" alt="Service 1" class="img-fluid zoom-on-hover">
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <img src="{{ url_for('static', filename='site/assets/img/branding.jpg') }}" alt="Service 2" class="img-fluid zoom-on-hover">
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <img src="{{ url_for('static', filename='site/assets/img/brode.jpg') }}" alt="Service 3" class="img-fluid zoom-on-hover">
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <img src="{{ url_for('static', filename='site/assets/img/impresseion.jpg') }}" alt="Service 4" class="img-fluid zoom-on-hover">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade {% if service == 'maintenance' %}show active{% endif %}" 
+                    id="maintenance" 
+                    role="tabpanel" 
+                    aria-labelledby="maintenance-tab"
+                    >
+
+                <img src="{{ url_for('static', filename='site/assets/img/it.jpg')}}" alt="" class="img-fluid services-img">
+                <h3>Des plateformes intelligentes, conçues pour évoluer et automatiser vos activités.</h3>
+                <p>
+                    Chez ConnectMe, nous développons des solutions web sur mesure, alliant design moderne, architecture robuste et intelligence artificielle. 
+                    Chaque projet est pensé pour offrir une expérience fluide, sécurisée et adaptée à vos besoins. Nous maîtrisons le développement fullstack, 
+                    l’intégration d’API, l’hébergement cloud et la gestion de domaine. Grâce à l’IA, nous automatisons vos processus métier, optimisons vos 
+                    flux et renforçons votre efficacité. Nos interfaces sont responsives, intuitives et alignées avec votre identité visuelle. Nous vous 
+                    accompagnons de la conception à la mise en ligne, avec une documentation claire et un support technique dédié. Que vous soyez une entreprise, 
+                    une institution ou un particulier, nous vous aidons à transformer vos idées en outils puissants. Avec ConnectMe, votre présence digitale 
+                    devient un levier stratégique.
+                </p>
+                <div class="container mt-4">
+                  <div class="row g-4">
+                    <div class="col-6 col-md-3">
+                      <img src="{{ url_for('static', filename='site/assets/img/dev-1.jpg') }}" alt="Service 1" class="img-fluid zoom-on-hover">
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <img src="{{ url_for('static', filename='site/assets/img/it.jpg') }}" alt="Service 2" class="img-fluid zoom-on-hover">
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <img src="{{ url_for('static', filename='site/assets/img/gps.jpg') }}" alt="Service 3" class="img-fluid zoom-on-hover">
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <img src="{{ url_for('static', filename='site/assets/img/reseaux.jpg') }}" alt="Service 4" class="img-fluid zoom-on-hover">
+                    </div>
+                  </div>
+                </div>
+                <h3 class="mt-4">Services IT & Infrastructure Numérique.</h3>
+                <p>
+                  ConnectMe Sarl propose une offre complète en technologies de l’information, couvrant la conception, le déploiement et la sécurisation de 
+                  vos systèmes informatiques. Nous réalisons des projets clé en main incluant la vente, l’installation et la configuration de réseaux 
+                  informatiques pour 5 à 200 usagers. Nos services englobent le câblage réseau, le routage, l’installation de points d’accès sans fil, 
+                  de systèmes IP, ainsi que la gestion d’architectures complexes. Nous assurons également le développement de sites web et d’applications 
+                  sur mesure (web et mobile), la mise à jour de logiciels, la maintenance des équipements, et le support technique aux utilisateurs. 
+                  Grâce à notre expertise en cybersécurité et en intelligence artificielle, nous intégrons des solutions automatisées et évolutives, 
+                  pensées pour durer et s’adapter à vos ambitions. ConnectMe, c’est un accompagnement complet — du design à la mise en ligne — avec 
+                  documentation, formation et réactivité.
+                </p>
+              </div>
+
+              <div class="tab-pane fade {% if service == 'financial' %}show active{% endif %}" 
+                    id="financial" 
+                    role="tabpanel" 
+                    aria-labelledby="financial-tab"
+                    >
+
+                <img src="{{ url_for('static', filename='site/assets/img/structure-2.jpg')}}" alt="" class="img-fluid services-img">
+                <h3>Génie Civil & Structures</h3>
+                <p>
+                  ConnectMe Sarl intervient dans la conception, le dimensionnement et la réalisation d’ouvrages de génie civil, allant des bâtiments en béton, 
+                  acier ou bois aux ponts, barrages et infrastructures complexes. Nous assurons une approche rigoureuse et personnalisée pour chaque projet, 
+                  en intégrant les normes techniques, les contraintes du terrain et les objectifs du client. Nos équipes prennent en charge la gestion complète 
+                  des projets, depuis l’étude jusqu’à la livraison, avec un suivi professionnel et des conseils techniques adaptés. Grâce à notre expertise en 
+                  hydraulique, nous concevons et réalisons des réseaux d’eau, des canaux, des stations d’épuration et des systèmes de drainage performants et 
+                  durables.
+                </p>
+
+                <div class="container mt-4">
+                  <div class="row g-4">
+                    <div class="col-6 col-md-3">
+                      <img src="{{ url_for('static', filename='site/assets/img/structure-1.jpg') }}" alt="Service 1" class="img-fluid zoom-on-hover">
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <img src="{{ url_for('static', filename='site/assets/img/hydro-1.jpg') }}" alt="Service 3" class="img-fluid zoom-on-hover">
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <img src="{{ url_for('static', filename='site/assets/img/bati.jpg') }}" alt="Service 4" class="img-fluid zoom-on-hover">
+                    </div>
+                    </div>
+                </div>
+
+                <h3 class="mt-4">Design & Finitions Architecturales</h3>
+                <p>
+                  En complément des travaux de structure, ConnectMe propose des services de décoration et de design intérieur et extérieur pour 
+                  valoriser vos espaces. Nous réalisons des faux plafonds, des travaux de peinture, des mastics et des finitions murales avec précision et 
+                  créativité. Chaque intervention est pensée pour allier esthétique, fonctionnalité et durabilité, en tenant compte de l’identité visuelle 
+                  du client et des exigences techniques du bâtiment. Notre équipe vous accompagne dans le choix des matériaux, des couleurs et des textures 
+                  pour créer des environnements harmonieux, modernes et adaptés à chaque usage.
+                </p>
+
+                <div class="container mt-4">
+                  <div class="row g-4">
+                    <div class="col-6 col-md-3">
+                      <img src="{{ url_for('static', filename='site/assets/img/peinture-1.jpg') }}" alt="Service 4" class="img-fluid zoom-on-hover">
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <img src="{{ url_for('static', filename='site/assets/img/peinture-2.jpg') }}" alt="Service 4" class="img-fluid zoom-on-hover">
+                    </div>
+                    
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section><!-- /Service Details Section -->
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    {% include 'includes/home/footer_site.html' %}
+  </footer>
+
+  {% include 'includes/home/script_site.html' %}
+
+</body>
+
+</html>

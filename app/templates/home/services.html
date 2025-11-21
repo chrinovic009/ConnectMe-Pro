@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include 'includes/home/head_site.html' %}
+</head>
+
+<body class="services-page">
+
+  <!-- Topbar -->
+  <div class="topbar bg-light py-2 border-bottom fixed-top">
+    {% include 'includes/home/info.html' %}
+  </div>
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    {% include 'includes/home/header_site.html' %}
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title dark-background">
+      <div class="container position-relative">
+        <h1>Services</h1>
+        <p>Des solutions concrètes, pensées pour répondre à vos besoins et accompagner votre croissance.</p>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{{ url_for('home_blueprint.home') }}">Acceuil</a></li>
+            <li class="current">Services</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Featured Services Section -->
+    <section id="featured-services" class="featured-services section">
+
+      <div class="container">
+
+        <style>
+          .btn-plus {
+            font-size: 2rem;
+            padding: 8px 12px;
+            transition: all 0.3s ease;
+          }
+        </style>
+
+        <div class="row gy-4">
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item item-cyan position-relative">
+              <div class="icon">
+                <i class="bi bi-bag"></i>
+              </div>
+              <a href="{{ url_for('home_blueprint.services_details', service='provision') }}" class="stretched-link">
+                <h3>Fourniture EPI & Consommables Bureau</h3>
+              </a>
+              <p>
+                ConnectMe fournit des équipements de protection individuelle (EPI) et des consommables de bureau fiables et adaptés, pour 
+                garantir sécurité, confort et productivité au quotidien.
+              </p>
+              <a href="" class="btn-get-started btn-plus"><i class="bi bi-arrow-right-circle"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item item-orange position-relative">
+              <div class="icon">
+                <i class="bi bi-palette"></i>
+              </div>
+              <a href="{{ url_for('home_blueprint.services_details', service='sale') }}" class="stretched-link">
+                <h3>Imprimérie</h3>
+              </a>
+              <p>
+                Chez ConnectMe, nous donnons vie à vos idées : visuels, impressions de qualité et broderies professionnelles sur vêtements, 
+                accessoires et textiles. Pour vos uniformes, tenues d’entreprise ou événements, nous valorisons votre image avec passion et précision.
+              </p>
+              <a href="" class="btn-get-started btn-plus"><i class="bi bi-arrow-right-circle"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item item-teal position-relative">
+              <div class="icon">
+                <i class="bi bi-cpu"></i>
+              </div>
+              <a href="{{ url_for('home_blueprint.services_details', service='maintenance') }}" class="stretched-link">
+                <h3>Service IT</h3>
+              </a>
+              <p>
+                Chez ConnectMe, nous concevons des plateformes web modernes, sécurisées et évolutives, intégrant des solutions intelligentes grâce à l’IA. 
+                Du design à l’automatisation, chaque projet est pensé pour simplifier vos processus, valoriser votre image et s’adapter à vos besoins.
+              </p>
+              <a href="" class="btn-get-started btn-plus"><i class="bi bi-arrow-right-circle"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item item-red position-relative">
+              <div class="icon">
+                <i class="bi bi-building"></i>
+              </div>
+              <a href="{{ url_for('home_blueprint.services_details', service='financial') }}" class="stretched-link">
+                <h3>Génie Civil</h3>
+              </a>
+              <p>
+                ConnectMe réalise vos ouvrages en béton, acier et bois — bâtiments, ponts, barrages, réseaux hydrauliques — tout en assurant la 
+                gestion de projets, les conseils techniques et les finitions décoratives intérieures et extérieures.
+              </p>
+              <a href="" class="btn-get-started btn-plus"><i class="bi bi-arrow-right-circle"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+        </div>
+
+      </div>
+
+    </section><!-- /Featured Services Section -->
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Nos Offres</h2>
+        <p>Des offres adaptées à chaque besoin, pour un service efficace et transparent.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row g-4 g-lg-0">
+
+          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="pricing-item">
+              <h3>Pack Essentiel</h3>
+              <ul>
+                <li><i class="bi bi-check"></i> <span>Création de logo simple</span></li>
+                <li><i class="bi bi-check"></i> <span>Carte de visite ou flyer</span></li>
+                <li><i class="bi bi-check"></i> <span>Site vitrine basique (HTML/CSS)</span></li>
+                <li><i class="bi bi-check"></i> <span>Installation de caméra standard</span></li>
+                <li class="na"><i class="bi bi-x"></i> <span>Application web ou mobile sur mesure</span></li>
+                <li class="na"><i class="bi bi-x"></i> <span>Automatisation par IA ou CMS</span></li>
+              </ul>
+              <div class="text-center"><a href="#" class="buy-btn">Lire Plus</a></div>
+            </div>
+          </div><!-- End Pricing Item -->
+
+          <div class="col-lg-4 featured" data-aos="zoom-in" data-aos-delay="200">
+            <div class="pricing-item">
+              <h3>Pack Pro</h3>
+              <ul>
+                <li><i class="bi bi-check"></i> <span>Identité visuelle complète (logo, charte, supports)</span></li>
+                <li><i class="bi bi-check"></i> <span>Site web administrable (CMS ou Laravel)</span></li>
+                <li><i class="bi bi-check"></i> <span>Déploiement de réseau informatique + vidéosurveillance</span></li>
+                <li><i class="bi bi-check"></i> <span>Contrôle d’accès biométrique + sécurité IP</span></li>
+                <li><i class="bi bi-check"></i> <span>Maintenance et support technique</span></li>
+              </ul>
+              <div class="text-center"><a href="#" class="buy-btn">Lire Plus</a></div>
+            </div>
+          </div><!-- End Pricing Item -->
+
+          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="pricing-item">
+              <h3>Pack Sur Mesure</h3>
+              <ul>
+                <li><i class="bi bi-check"></i> <span>Branding + supports imprimés + site web + cybersécurité</span></li>
+                <li><i class="bi bi-check"></i> <span>Audit, conception, installation et maintenance IT</span></li>
+                <li><i class="bi bi-check"></i> <span>Développement logiciel + automatisation par IA</span></li>
+                <li><i class="bi bi-check"></i> <span>Solutions intégrées pour institutions et grandes structures</span></li>
+                <li><i class="bi bi-check"></i> <span>Documentation technique + formation utilisateur</span></li>
+              </ul>
+              <div class="text-center"><a href="#" class="buy-btn">Lire Plus</a></div>
+            </div>
+          </div><!-- End Pricing Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Pricing Section -->
+
+    <!-- Comment Form Section -->
+    <section id="comment-form" class="comment-form section">
+      <div class="container">
+
+          <form method="POST" action="{{ url_for('home_blueprint.comment_avis') }}">
+
+              <h4>Que pensez-vous de nous?</h4>
+              <p>
+                Votre avis est une partie essentielle de notre parcours vers l'excellence. 
+                Veuillez partager votre expérience avec nous et nous aider à continuer à grandir et à 
+                nous améliorer. Chaque mot que vous partagez nous aide à devenir meilleurs et plus engagés 
+                à vous servir avec les meilleures solutions en matière d'énergie solaire.
+              </p>
+
+              {{ testimonial_form.hidden_tag() }}
+              <div class="row">
+                  <div class="col-md-6 form-group">
+                      {{ testimonial_form.name(class="form-control", placeholder="Votre Nom*") }}
+                  </div>
+                  <div class="col-md-6 form-group">
+                      {{ testimonial_form.role(class="form-control", placeholder="Votre Email*") }}
+                  </div>
+              </div>
+
+              <div class="row">
+                  <div class="col form-group">
+                      {{ testimonial_form.content(class="form-control", placeholder="Votre Témoignage*") }}
+                  </div>
+              </div>
+
+              <div class="row">
+                  <div class="col form-group">
+                      {{ testimonial_form.stars(class="form-control", placeholder="Stars (1-5)") }}
+                  </div>
+              </div>
+
+              <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Poster votre Avis</button>
+              </div>
+
+          </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    {% include 'includes/home/footer_site.html' %}
+  </footer>
+
+  {% include 'includes/home/script_site.html' %}
+
+</body>
+
+</html>
