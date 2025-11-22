@@ -23,9 +23,10 @@ def home():
 
     compuny = Director.query.first()
     partenaire = Partenaires.query.filter(Partenaires.image is not None).all()
+    teamer = Team.query.order_by(Team.created_at.desc()).all()
 
     return render_template('home/index.html', page_active="home", 
-                            compuny=compuny, partenaire=partenaire)
+                            compuny=compuny, partenaire=partenaire, teamer=teamer)
 
 # pour la page d'à propos
 @blueprint.route('/about')

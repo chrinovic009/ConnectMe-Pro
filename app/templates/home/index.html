@@ -238,9 +238,51 @@
 
     </section><!-- /Features Section -->
 
+     {% if teamer %}
+      <section id="team" class="team section">
+
+        <div class="container">
+
+          <div class="row gy-5">
+
+            {% for b in teamer %}
+              <div class="col-lg-3 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
+                <div class="member-img">
+                  <img src="{{ b.image }}" class="img-fluid" alt="">
+                  <div class="social">
+                    <a href="{{ b.facebook }}"><i class="bi bi-facebook"></i></a>
+                    <a href="{{ b.insta }}"><i class="bi bi-instagram"></i></a>
+                    <a href="{{ b.linked }}"><i class="bi bi-linkedin"></i></a>
+                  </div>
+                </div>
+                <div class="member-info text-center">
+                  <h4>{{ b.name }}</h4>
+                  <span>{{ b.poste }}</span>
+                  <p>
+                    {% if b.poste == 'CEO' or b.poste == 'Ceo'%} 
+                      À la tête de notre vision, un leadership engagé qui allie stratégie, innovation et proximité terrain.
+                    {% endif %}
+                  </p>
+                </div>
+              </div><!-- End Team Member -->
+            {% endfor %}
+
+          </div>
+
+        </div>
+
+      </section><!-- /Team Section -->
+    {% endif %}
+
     <!-- Clients Section -->
     {% if partenaire %}
       <section id="clients" class="clients section">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Nos Clients</h2>
+          <p>Ils nous ont fait confiance — des collaborations solides, bâties sur l’écoute, la qualité et les résultats.</p>
+        </div><!-- End Section Title -->
 
         <div class="container">
 
