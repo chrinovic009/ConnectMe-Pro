@@ -22,8 +22,10 @@ from app.utils.decorator.securite import save_file_to_cloudinary
 def home():
 
     compuny = Director.query.first()
+    partenaire = Partenaires.query.filter(Partenaires.image is not None).all()
 
-    return render_template('home/index.html', page_active="home", compuny=compuny)
+    return render_template('home/index.html', page_active="home", 
+                            compuny=compuny, partenaire=partenaire)
 
 # pour la page d'à propos
 @blueprint.route('/about')
