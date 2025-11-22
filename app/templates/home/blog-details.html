@@ -222,33 +222,28 @@
   </main>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      let postLinks = document.querySelectorAll(".post-link");
+    document.querySelectorAll('.post-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('data-target-id');
 
-      postLinks.forEach(link => {
-        link.addEventListener("click", function(event) {
-          event.preventDefault();
-
-          let targetId = this.getAttribute("data-target-id");
-          let allPosts = document.querySelectorAll(".post-content");
-
-          // Supprimer tous les articles sauf celui sélectionné
-          allPosts.forEach(post => {
-            if (post.getAttribute("data-post-id") !== targetId.replace("post-", "")) {
-              post.classList.remove("show", "active");
-              post.style.display = "none"; // Masquer l'article
-            } else {
-              post.classList.add("show", "active");
-              post.style.display = "block"; // Afficher l'article sélectionné
-            }
-          });
-
-          // Supprimer la classe active des liens et ajouter au lien actuel
-          postLinks.forEach(link => link.classList.remove("active"));
-          this.classList.add("active");
-        });
-      });
+    // cacher tous les contenus
+    document.querySelectorAll('.tab-pane').forEach(pane => {
+      pane.classList.remove('show', 'active');
     });
+
+    // activer le bon contenu
+    const targetPane = document.getElementById(targetId);
+    if (targetPane) {
+      targetPane.classList.add('show', 'active');
+    }
+
+    // gérer l’état actif des liens
+    document.querySelectorAll('.post-link').forEach(l => l.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
   </script>
 
   <footer id="footer" class="footer dark-background">
