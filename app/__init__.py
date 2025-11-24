@@ -53,7 +53,7 @@ def create_app(config="app.config.Config"):
         response.headers["X-Frame-Options"] = "DENY"
         response.headers["X-Content-Type-Options"] = "nosniff"
         response.headers["Referrer-Policy"] = "no-referrer-when-downgrade"
-        response.headers["Content-Security-Policy"] = "default-src 'self' https://res.cloudinary.com"
+        response.headers["Content-Security-Policy"] = "default-src *"
         return response
         
     app.config.from_object(config)
