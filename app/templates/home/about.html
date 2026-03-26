@@ -112,66 +112,100 @@
     </section><!-- /Stats Section -->
 
     <!-- Clients Section -->
-    {% if partenaire %}
-      <section id="clients" class="clients section">
+    <section id="clients" class="clients section">
 
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Nos Clients</h2>
-          <p>Ils nous ont fait confiance — des collaborations solides, bâties sur l’écoute, la qualité et les résultats.</p>
-        </div><!-- End Section Title -->
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Nos Clients</h2>
+        <p>Ils nous ont fait confiance — des collaborations solides, bâties sur l’écoute, la qualité et les résultats.</p>
+      </div><!-- End Section Title -->
 
-        <div class="container">
+      <div class="container">
 
-          <div class="swiper init-swiper">
-            <script type="application/json" class="swiper-config">
-              {
-                "loop": true,
-                "speed": 600,
-                "autoplay": {
-                  "delay": 5000
+        <div class="swiper init-swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "breakpoints": {
+                "320": {
+                  "slidesPerView": 2,
+                  "spaceBetween": 40
                 },
-                "slidesPerView": "auto",
-                "pagination": {
-                  "el": ".swiper-pagination",
-                  "type": "bullets",
-                  "clickable": true
+                "480": {
+                  "slidesPerView": 3,
+                  "spaceBetween": 60
                 },
-                "breakpoints": {
-                  "320": {
-                    "slidesPerView": 2,
-                    "spaceBetween": 40
-                  },
-                  "480": {
-                    "slidesPerView": 3,
-                    "spaceBetween": 60
-                  },
-                  "640": {
-                    "slidesPerView": 4,
-                    "spaceBetween": 80
-                  },
-                  "992": {
-                    "slidesPerView": 6,
-                    "spaceBetween": 120
-                  }
+                "640": {
+                  "slidesPerView": 4,
+                  "spaceBetween": 80
+                },
+                "992": {
+                  "slidesPerView": 6,
+                  "spaceBetween": 120
                 }
               }
-            </script>
+            }
+          </script>
 
-            <div class="swiper-wrapper align-items-center">
-              {% for p in partenaire %}
-                <div class="swiper-slide">
-                  <img src="{{ p.image }}" class="img-fluid" alt="">
-                </div>
-              {% endfor %}
+          <div class="swiper-wrapper align-items-center">
+            {% for p in partenaire %}
+              <div class="swiper-slide">
+                <img src="{{ p.image }}" class="img-fluid" alt="">
+              </div>
+            {% endfor %}
+            <div class="swiper-slide">
+                <img src="../../static/site/assets/img/clients/client-1.png" class="img-fluid" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="../../static/site/assets/img/clients/client-2.png" class="img-fluid" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="../../static/site/assets/img/clients/client-3.png" class="img-fluid" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="../../static/site/assets/img/clients/client-4.png" class="img-fluid" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="../../static/site/assets/img/clients/client-5.png" class="img-fluid" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="../../static/site/assets/img/clients/client-6.png" class="img-fluid" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="../../static/site/assets/img/clients/client-7.png" class="img-fluid" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="../../static/site/assets/img/clients/client-8.png" class="img-fluid" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="../../static/site/assets/img/clients/client-9.png" class="img-fluid" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="../../static/site/assets/img/clients/client-10.png" class="img-fluid" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="../../static/site/assets/img/clients/client-11.png" class="img-fluid" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="../../static/site/assets/img/clients/client-12.png" class="img-fluid" alt="">
             </div>
           </div>
-
         </div>
 
-      </section><!-- /Clients Section -->
-    {% endif %}
+      </div>
 
+    </section><!-- /Clients Section -->
+    
     <!-- Skills Section -->
     <section id="skills" class="skills section">
 
