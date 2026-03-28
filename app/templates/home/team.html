@@ -33,47 +33,147 @@
     </div><!-- End Page Title -->
 
     <!-- Team Section -->
-    {% if teamer %}
-      <section id="team" class="team section">
+    <section id="team" class="team section">
 
-        <div class="container">
+      <div class="container">
 
-          <div class="row gy-5">
+        <div class="row gy-5">
 
-            {% for b in teamer %}
-              <div class="col-lg-3 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
-                <div class="member-img">
-                  <img src="{{ b.image }}" class="img-fluid" alt="">
-                  <div class="social">
-                    <a href="{{ b.facebook }}"><i class="bi bi-facebook"></i></a>
-                    <a href="{{ b.insta }}"><i class="bi bi-instagram"></i></a>
-                    <a href="{{ b.linked }}"><i class="bi bi-linkedin"></i></a>
-                  </div>
+          {% for b in teamer %}
+            <div class="col-lg-3 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
+              <div class="member-img">
+                <img src="{{ b.image }}" class="img-fluid" alt="">
+                <div class="social">
+                  <a href="{{ b.facebook }}"><i class="bi bi-facebook"></i></a>
+                  <a href="{{ b.insta }}"><i class="bi bi-instagram"></i></a>
+                  <a href="{{ b.linked }}"><i class="bi bi-linkedin"></i></a>
                 </div>
-                <div class="member-info text-center">
-                  <h4>{{ b.name }}</h4>
-                  <span>{{ b.poste }}</span>
-                  <p>
-                    {% if b.poste == 'CEO' or b.poste == 'Ceo'%} 
-                      À la tête de notre vision, un leadership engagé qui allie stratégie, innovation et proximité terrain.
-                    {% endif %}
-                  </p>
-                </div>
-              </div><!-- End Team Member -->
-            {% endfor %}
+              </div>
+              <div class="member-info text-center">
+                <h4>{{ b.name }}</h4>
+                <span>{{ b.poste }}</span>
+                <p>
+                  {% if b.poste == 'CEO' or b.poste == 'Ceo'%} 
+                    À la tête de notre vision, un leadership engagé qui allie stratégie, innovation et proximité terrain.
+                  {% endif %}
+                </p>
+              </div>
+            </div><!-- End Team Member -->
+          {% endfor %}
 
-          </div>
+          <div class="col-lg-3 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
+            <div class="member-img">
+              <img src="{{ url_for('static', filename='site/assets/img/team/aris.png')}}" class="img-fluid" alt="">
+              <div class="social">
+                <a href="" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="" target="_blank"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info text-center">
+              <h4>Aris Mwehu</h4>
+              <span>CEO</span>
+              <p>
+                À la tête de notre vision, un leadership engagé qui allie stratégie, innovation et proximité terrain.
+              </p>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-3 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
+            <div class="member-img">
+              <img src="{{ url_for('static', filename='site/assets/img/team/joelle.png')}}" class="img-fluid" alt="">
+              <div class="social">
+                <a href="" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="" target="_blank"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info text-center">
+              <h4>Joelle Chenge</h4>
+              <span>OFFICER MANAGER</span>
+              <p>
+                En charge de la gestion administrative et opérationnelle, elle assure le bon fonctionnement de l’entreprise, la coordination des équipes et la satisfaction client.
+              </p>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-3 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
+            <div class="member-img">
+              <img src="{{ url_for('static', filename='site/assets/img/team/chris.png')}}" class="img-fluid" alt="">
+              <div class="social">
+                <a href="https://www.instagram.com/chrinovic009" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="https://github.com/chrinovic009" target="_blank"><i class="bi bi-github"></i></a>
+                <a href="https://www.linkedin.com/in/chrinovic-nyembo" target="_blank"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info text-center">
+              <h4>Chrinovic Nyembo</h4>
+              <span>Dévéloppeur Fullstack</span>
+              <p>
+                Expert en développement web, il conçoit des solutions digitales modernes, sécurisées et adaptées aux besoins de nos clients.
+              </p>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-3 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
+            <div class="member-img">
+              <img src="{{ url_for('static', filename='site/assets/img/team/guy.png')}}" class="img-fluid" alt="">
+              <div class="social">
+                <a href="" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="" target="_blank"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info text-center">
+              <h4>Guy Kapend</h4>
+              <span>DIRTECH</span>
+              <p>
+                En charge de la direction technique, il supervise les projets IT, garantissant l’innovation, la qualité et la performance de nos solutions digitales.
+              </p>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-3 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
+            <div class="member-img">
+              <img src="{{ url_for('static', filename='site/assets/img/team/simon.png')}}" class="img-fluid" alt="">
+              <div class="social">
+                <a href="" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="" target="_blank"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info text-center">
+              <h4>Simon Kasompe</h4>
+              <span>Ingénieur Civil</span>
+              <p>
+                Expert en génie civil, il conçoit et supervise la réalisation d’ouvrages structuraux, hydrauliques et décoratifs, alliant rigueur technique et créativité.
+              </p>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-3 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
+            <div class="member-img">
+              <img src="{{ url_for('static', filename='site/assets/img/team/gloire.png')}}" class="img-fluid" alt="">
+              <div class="social">
+                <a href="" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="" target="_blank"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info text-center">
+              <h4>Gloire Githo</h4>
+              <span>Designer</span>
+              <p>
+                En charge du design, il crée des visuels modernes et impactants pour valoriser l’image de nos clients à travers tous les supports de communication.
+              </p>
+            </div>
+          </div><!-- End Team Member -->
 
         </div>
 
-      </section><!-- /Team Section -->
-    {% else %}
-      <div class="row justify-content-center text-center">
-          <div class="col-12">
-            <article>Aucun membre pour le moment</article>
-          </div>
       </div>
-    {% endif %}
+
+    </section><!-- /Team Section -->
 
   </main>
 
