@@ -6,17 +6,21 @@ from importlib import import_module
 import os
 from app.utils.decorator.time import humanize_date
 
-
 api_meteo = "d07586380ddddf89d032e74098364b8d"
 
-# Chemin où les images seront sauvegardées
-UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
+# --- CORRECTION DÉBUT ---
+# Vercel utilise un système de fichiers en lecture seule, sauf pour /tmp
+if os.environ.get('VERCEL'):
+    UPLOAD_FOLDER = '/tmp/uploads'
+else:
+    UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
+
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
+# --- CORRECTION FIN ---
 
-# Limiter la taille max des fichiers (ex. 10 Mo)
-MAX_CONTENT_LENGTH = 10 * 1024 * 1024
-
+# Limiter la taille max des fichiers (100 Mo)
+MAX_CONTENT_LENGTH = 100 * 1024 * 1024 
 
 def register_extensions(app):
     db.init_app(app)
@@ -30,12 +34,10 @@ def register_extensions(app):
     login_manager.login_view = "auth_blueprint.login"
     login_manager.login_message_category = 'info'
 
-
 def register_blueprints(app):
     for module_name in ('authentication', 'home', 'admin'):
         module = import_module('app.{}.routes'.format(module_name))
         app.register_blueprint(module.blueprint)
-
 
     @app.teardown_request
     def shutdown_session(exception=None):
@@ -57,7 +59,8 @@ def create_app(config="app.config.Config"):
         return response
         
     app.config.from_object(config)
-    app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024 # 100 MB
+    app.config['MAX_CONTENT_LENGTH'] = MAX_CONTENT_LENGTH
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER # Utile pour récupérer le chemin dans vos routes
 
     register_extensions(app)
     register_blueprints(app)
